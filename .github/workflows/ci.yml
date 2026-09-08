@@ -16,6 +16,8 @@ jobs:
         with:
           python-version: '3.10'
       - name: Install dependencies & test
+        env:
+          PYTHONPATH: .
         run: |
           pip install -r requirements.txt -r dev-requirements.txt
           pytest
