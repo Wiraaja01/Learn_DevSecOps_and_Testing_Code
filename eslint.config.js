@@ -8,12 +8,18 @@ const compat = new FlatCompat({
 });
 
 module.exports = [
+  {
+    ignores: ["venv/**", "node_modules/**", "coverage/**"]
+  },
   js.configs.recommended,
   ...compat.config({
-    env: { 
-      es2021: true, 
-      node: true, 
-      jest: true 
+    env: {
+      es2021: true,
+      node: true,
+      jest: true
+    },
+    globals: {
+      __ENV: "readonly"
     },
     rules: {
       "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
