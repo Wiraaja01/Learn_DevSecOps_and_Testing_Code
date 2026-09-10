@@ -73,12 +73,10 @@ jobs:
       - run: npm ci
 
       - name: Start application server
-        run: npm start &
+        run: npm start & 
+             npx wait-on http://localhost:3000 --timeout 30000
 
-      - name: Wait for server to be ready
-        run: npx wait-on http://localhost:3000 --timeout 30000
-        
       - name: Run k6 test
-        uses: grafana/k6-action@v0.3.0
+        uses: grafana/setup-k6-action@v1
         with:
           filename: loadtest/script.js
